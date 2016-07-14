@@ -1,4 +1,4 @@
-﻿using UnityEngine;  
+﻿/*using UnityEngine;  
 using UnityEditor;  
 using UnityEditorInternal;
 
@@ -83,3 +83,4 @@ public class GameManagerEditor : Editor
         }
     }
 }
+*/

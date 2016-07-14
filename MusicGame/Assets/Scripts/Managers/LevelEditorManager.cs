@@ -125,7 +125,7 @@ public class LevelEditorManager : Singleton<LevelEditorManager>
     {
         DraggableBlock newBlock = Instantiate<DraggableBlock>(editorBlockPrefab);
         newBlock.transform.position = creationPosition;
-        //newBlock.transform.parent = transform;
+        newBlock.transform.parent = transform;
 
         SoundData soundData = newBlock.gameObject.GetComponent<SoundData>();
         Debug.Log(soundData);
@@ -157,7 +157,7 @@ public class LevelEditorManager : Singleton<LevelEditorManager>
 
         string path = Application.persistentDataPath;
 
-        Debug.Log(path);
+        DebugText.Instance.SetText(path);
 
         FileInfo file;
         
@@ -184,6 +184,8 @@ public class LevelEditorManager : Singleton<LevelEditorManager>
         }
 
         w.Close();
+
+        DebugText.Instance.SetText("DONE: " + file.FullName);
     }
 
     public void ClearEditor()

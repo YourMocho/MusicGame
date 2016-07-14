@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu(fileName = "AudioSettings", menuName = "Settings/Audio Settings")]
-public class AudioSettings : BaseSingletonObject<AudioSettings>
+//[CreateAssetMenu(fileName = "AudioSettings", menuName = "Settings/Audio Settings")]
+public class AudioSettings : Singleton<AudioSettings>
 {
     public float Volume { get { return volume; } }
 

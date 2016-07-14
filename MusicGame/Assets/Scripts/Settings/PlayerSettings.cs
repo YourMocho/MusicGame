@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu(fileName = "PlayerSettings", menuName = "Settings/Player Settings")]
-public class PlayerSettings : BaseSingletonObject<PlayerSettings>
+//[CreateAssetMenu(fileName = "PlayerSettings", menuName = "Settings/Player Settings")]
+public class PlayerSettings : Singleton<PlayerSettings>
 {
     public float MinDragDistance { get { return minDragDistance * Screen.width; } }
 

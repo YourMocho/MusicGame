@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "GameSettings", menuName = "Settings/Game Settings")]
-public class GameSettings : BaseSingletonObject<GameSettings>
+//[CreateAssetMenu(fileName = "GameSettings", menuName = "Settings/Game Settings")]
+public class GameSettings : Singleton<GameSettings>
 {
     public float SolutionLeeway { get { return solutionLeeway; } }
 

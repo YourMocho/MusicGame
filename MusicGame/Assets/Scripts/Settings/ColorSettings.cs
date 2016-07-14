@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[CreateAssetMenu(fileName = "ColorSettings", menuName = "Settings/Color Settings")]
-public class ColorSettings : BaseSingletonObject<ColorSettings>
+//[CreateAssetMenu(fileName = "ColorSettings", menuName = "Settings/Color Settings")]
+public class ColorSettings : Singleton<ColorSettings>
 {
     public Color TrailColor { get { return trailColor; } }
 

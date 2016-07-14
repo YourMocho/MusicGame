@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Remoting.Contexts;
 
 public class LevelEditorGUI : MonoBehaviour
 {
@@ -59,8 +60,6 @@ public class LevelEditorGUI : MonoBehaviour
     {
         showGUIButton.gameObject.SetActive(false);
 
-        showGUIButton.onClick.AddListener(LoadFileNamesIntoDropDown);
-
         SetupDropDowns();
 
         activePanel = createPanel;
@@ -91,6 +90,8 @@ public class LevelEditorGUI : MonoBehaviour
         activePanel = savePanel;
 
         activePanel.SetActive(true);
+
+        LoadFileNamesIntoDropDown();
     }
 
     public void PlayView()
@@ -154,9 +155,24 @@ public class LevelEditorGUI : MonoBehaviour
 
     void LoadFileNamesIntoDropDown()
     {
-        string path = Application.persistentDataPath;
+        Debug.Log("Loading File names");
+        /////
+        string realPath = Application.persistentDataPath + "/levels/";
+#if UNITY_ANDROID
+        realPath = "Internal storage/Android/data/com.HearAndTheir.MusicGame";
+#endif
 
-        DirectoryInfo info = new DirectoryInfo(path);
+        Debug.Log(realPath);
+        ////
+
+        // string path = Application.persistentDataPath;
+
+        if (!Directory.Exists(realPath))
+        {
+            Directory.CreateDirectory(realPath);
+        }
+
+        DirectoryInfo info = new DirectoryInfo(realPath);
         FileInfo[] files = info.GetFiles();
 
         levelLoadDropDown.options.Clear();
@@ -169,5 +185,9 @@ public class LevelEditorGUI : MonoBehaviour
         levelLoadDropDown.onValueChanged.AddListener(SetCurrentLoadLevel);
 
         levelLoadDropDown.RefreshShownValue();
+
+        DebugText.Instance.SetText(files);
+
+        Debug.Log("loaded names into dropdown: " + files.Length);
     }
 }
